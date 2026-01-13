@@ -171,3 +171,4 @@ temp/
 qiskit_cache/
 .qiskit/
 braket_cache/
+*.png
