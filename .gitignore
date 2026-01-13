@@ -1,0 +1,167 @@
+venv/
+env/
+ENV/
+env-mac/# ============================================
+# Python
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ============================================
+# Virtual Environment
+# ============================================
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# ============================================
+# Jupyter Notebooks
+# ============================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# ============================================
+# Data Files (IMPORTANT for your project!)
+# ============================================
+# Exclude all .txt data files
+*.txt
+!lattice.txt
+# If lattice.txt is important config, keep it with !
+# Otherwise remove the ! line
+
+# Data directories
+data/
+training-*/
+*-pipeline-*/
+
+# Model files
+*.h5
+*.pkl
+*.pickle
+*.pth
+*.pt
+*.ckpt
+models/
+saved_models/
+
+# Dataset files
+*.csv
+*.tsv
+*.dat
+*.npy
+*.npz
+
+# ============================================
+# IDE & Editors
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================
+# Operating System
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# ============================================
+# GitHub
+# ============================================
+.github/
+
+# ============================================
+# Logs & Temporary Files
+# ============================================
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+.venv/
+venv.bak/
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Data files (usually too large for git)
+data/
+*.csv
+*.xlsx
+*.h5
+*.pkl
+*.pickle
+*.txt
+
+# Model files (often too large)
+models/
+*.pth
+*.pt
+*.ckpt
+*.pb
+*.nbt
+saved_models/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Quantum computing specific
+qiskit_cache/
+.qiskit/
+braket_cache/

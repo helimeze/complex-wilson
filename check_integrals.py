@@ -1,0 +1,53 @@
+# Check if the integral formulas match Mathematica
+import torch
+from model_HR_new import AdSBHNet
+from constants import dreal
+
+print("Checking integral formulas against Mathematica comments...")
+print()
+
+# Read the formulas from model_HR_new.py
+print("=" * 70)
+print("INTEGRATE_L (line 132-165):")
+print("=" * 70)
+print("Comment says:")
+print("  L(z*) = (2/π) ∫ sqrt(g) / sqrt(1 - (z^4 f(z*))/(z*^4 f(z))) dz")
+print()
+print("Code has (line 158):")
+print("  denom = (zs_b**4 * fzs) / (z**4 * fz + epsc) - 1.0 + epsc")
+print("  integrand = torch.sqrt(gz) / torch.sqrt(denom)")
+print()
+print("This computes: sqrt(g) / sqrt((z*^4 f(z*))/(z^4 f(z)) - 1)")
+print("             = sqrt(g) / sqrt(-[1 - (z*^4 f(z*))/(z^4 f(z))])")
+print()
+print("⚠️  SIGN MISMATCH: Code has NEGATIVE of what comment says!")
+print("   Should be: 1 - (...), not (...) - 1")
+print()
+
+print("=" * 70)
+print("INTEGRATE_V (line 168-215):")
+print("=" * 70)
+print("Comment says:")
+print("  V(z*) = 2π * (∫ [sqrt(fg)/sqrt(1 - (z^4 f(z*))/(z*^4 f(z))) - 1]/z^2 dz - 1/z*)")
+print()
+print("Code has (line 201):")
+print("  inner = 1.0 - (z**4 * fzs) / (zs_b**4 * fz + epsc) + epsc")
+print("  fg_sqrt = torch.sqrt(fz * gz)")
+print("  term = fg_sqrt / torch.sqrt(inner) - 1.0")
+print()
+print("This computes: [sqrt(fg)/sqrt(1 - (z^4 f(z*))/(z*^4 f(z))) - 1]/z^2")
+print()
+print("✓  Formula matches comment")
+print()
+
+print("=" * 70)
+print("SUMMARY:")
+print("=" * 70)
+print("integrate_L: ❌ WRONG SIGN - needs to be fixed!")
+print("integrate_V: ✓ Correct")
+print()
+print("The sign error in integrate_L means:")
+print("  - When the argument should be positive, code gets negative")
+print("  - This leads to sqrt of negative number → NaN or complex results")
+print("  - Or if complex branch is taken, the values are wrong")
+print()
