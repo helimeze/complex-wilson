@@ -438,8 +438,8 @@ with torch.no_grad():
     model.b.zero_()
 
     # 
-    model.a[0] = -0.08
-    model.b[0] = -0.025
+    model.a[0] = -0.1
+    model.b[0] = -0.05
 
     # Higher-order terms 
     if N > 1:
@@ -760,7 +760,7 @@ plt.plot(Lc_unstable.cpu(), Vc_unstable.cpu(), '-', color='navy', linewidth=2)
 plt.errorbar(dataset.L.cpu(), dataset.V.real.cpu(),
              yerr=dataset.sigma.real.cpu(), fmt='o', color='gray', 
              markersize=6, capsize=3, label='data', alpha=0.8)
-#plt.axvline(Lc[imax].cpu(), color='green', linestyle='--', alpha=0.5, label=f'L_max={Lc[imax].item():.3f}')
+
 plt.ylim(-4, None)
 plt.xlim(0, 1.05*dataset.L.max().item())
 plt.title(f"T = {T} MeV", fontsize=14)
